@@ -27,6 +27,8 @@ const App = () => {
     getInitialMonth(initialTransactions)
   );
 
+  const [isFormVisible, setIsFormVisible] = useState(false);
+
   const availableMonths = useMemo(() => {
     const months = transactions.map((t) => t.date.substring(0, 7));
 
@@ -93,23 +95,32 @@ const App = () => {
       </header>
 
       <section className='filter-section'>
-        <Filter
-          availableMonths={availableMonths}
-          selectedMonth={selectedMonth}
-          onMonthChange={setSelectedMonth}
-        />
+        <div className='filter-content'>
+          <Filter
+            availableMonths={availableMonths}
+            selectedMonth={selectedMonth}
+            onMonthChange={setSelectedMonth}
+          />
+          <button
+            className='add-transaction-btn'
+            onClick={() => setIsFormVisible((prev) => !prev)}>
+            {isFormVisible ? 'Cancelar Transação' : 'Adicionar Nova Transação'}
+          </button>
+        </div>
       </section>
+
+      {isFormVisible && (
+        <section className='transaction-form-area'>
+          <h2>Nova Transação</h2>
+          <TransactionForm onAddTransaction={addTransaction} />
+        </section>
+      )}
 
       <div className='dashboard-content'>
         <section className='summary-cards'>
           <Card title='Saldo Total' value={summary.balance} type='balance' />
           <Card title='Receitas' value={summary.income} type='income' />
           <Card title='Despesas' value={summary.expense} type='expense' />
-        </section>
-
-        <section className='transaction-form-area'>
-          <h2>Nova Transação</h2>
-          <TransactionForm onAddTransaction={addTransaction} />
         </section>
 
         <section className='main-area'>
