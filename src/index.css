@@ -1,30 +1,41 @@
 /* Variáveis de cores */
 :root {
-  --primary-color: #3f51b5;
-  --income-color: #4caf50;
-  --expense-color: #f44336;
-  --balance-color: #2196f3;
-  --bg-color: #f4f7f6;
-  --card-bg: #ffffff;
-  --text-color: #333;
+  --bg-color: #212121;
+  --card-bg: #2e2e2e;
+  --border-color: #3f3f3f;
+
+  --text-primary: #e0e0e0;
+  --text-secondary: #a9a9a9;
+
+  --shadow-color: rgba(0, 0, 0, 0.3);
+
+  --primary-color: #7c4dff;
+  --primary-color-hover: rgba(124, 77, 255, 0.5);
+
+  --success-color: #69f0ae;
+  --success-color-hover: rgba(105, 240, 174, 0.5);
+
+  --error-color: #ff5252;
+  --error-color-hover: rgba(255, 82, 82, 0.5);
 }
 
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
   background-color: var(--bg-color);
-  color: var(--text-color);
+  color: var(--text-primary);
 }
 
 input,
 select,
 button {
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 1em;
   cursor: pointer;
   background-color: var(--card-bg);
+  color: var(--text-primary);
 }
 
 input,
@@ -34,19 +45,23 @@ select {
 
 select {
   padding: 10px 36px 10px 12px;
-  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="gray" d="M7.7 10.3c.4.4 1 .4 1.4 0l4-4c.4-.4.4-1 0-1.4s-1-.4-1.4 0L8 8.9 4.7 5.6c-.4-.4-1-.4-1.4 0s-.4 1 0 1.4l4 4z"/></svg>');
+  background-image: url('./assets/arrowDown.svg');
   background-repeat: no-repeat;
   background-position: right 10px center;
 }
 
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(1) brightness(66.3%);
+}
+
 button {
   background-color: var(--primary-color);
-  color: white;
   cursor: pointer;
   transition: background-color 0.2s;
   border: none;
 }
 
 button:hover {
-  background-color: #303f9f;
+  background-color: var(--primary-color-hover);
 }

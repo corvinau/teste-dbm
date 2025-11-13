@@ -5,7 +5,12 @@
   padding: 10px 15px;
   border-radius: 4px;
   background-color: var(--bg-color);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 580px) {
+  .transaction-item {
+    grid-template-columns: 1fr 1fr 1fr 45px;
+  }
 }
 
 .transaction-description {
@@ -15,28 +20,35 @@
   text-overflow: ellipsis;
 }
 
+.transaction-date {
+  text-align: right;
+}
+
 .transaction-amount {
   font-weight: bold;
   text-align: right;
 }
 
 .income .transaction-amount {
-  color: var(--income-color);
+  color: var(--success-color);
 }
 
 .expense .transaction-amount {
-  color: var(--expense-color);
+  color: var(--error-color);
+}
+
+.transaction-delete-btn {
+  text-align: end;
 }
 
 .delete-btn {
-  background: none;
+  background-color: var(--error-color);
   border: none;
-  color: #999;
   font-size: 1.2em;
   cursor: pointer;
-  text-align: right;
+  padding: 5px 10px;
 }
 
 .delete-btn:hover {
-  color: var(--expense-color);
+  background-color: var(--error-color-hover);
 }

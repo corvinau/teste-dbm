@@ -15,7 +15,7 @@
   background: var(--card-bg);
   padding: 15px 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 4px var(--shadow-color);
   margin-bottom: 30px;
 }
 
@@ -26,23 +26,37 @@
   margin-bottom: 30px;
 }
 
+@media (max-width: 695px) {
+.summary-cards {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 696px) and (max-width: 845px) {
+.summary-cards {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
 .transaction-form-area {
   background: var(--card-bg);
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px var(--shadow-color);
   margin-bottom: 30px;
 }
 
 .main-area {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   gap: 30px;
 }
 
-@media (min-width: 800px) {
-  .main-area {
-    flex-direction: row;
+@media (max-width: 1125px) {
+.main-area {
+    display: flex;
+    flex-direction: column-reverse;
   }
 }
 
@@ -51,9 +65,12 @@
   background: var(--card-bg);
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px var(--shadow-color);
   flex: 1;
-  height: 100%;
+}
+
+.transaction-list-area {
+  height: fit-content;
 }
 
 .transaction-list {
@@ -70,17 +87,17 @@
   border-radius: 6px;
   color: white;
   font-weight: bold;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px var(--shadow-color);
   z-index: 1000;
   animation: fadeInOut 3s forwards;
 }
 
 .notification-success {
-  background-color: var(--income-color);
+  background-color: var(--success-color);
 }
 
 .notification-error {
-  background-color: var(--expense-color);
+  background-color: var(--error-color);
 }
 
 @keyframes fadeInOut {

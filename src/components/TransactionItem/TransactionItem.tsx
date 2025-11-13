@@ -22,12 +22,14 @@ const TransactionItem = ({ transaction, onDelete }: TransactionItemProps) => {
       <span className='transaction-amount'>
         {isExpense ? '-' : '+'} {formattedAmount}
       </span>
-      <button
-        className='delete-btn'
-        onClick={() => onDelete(transaction.id)}
-        aria-label={`Deletar transação: ${transaction.description}`}>
-        &times;
-      </button>
+      <div className='transaction-delete-btn'>
+        <button
+          className='delete-btn'
+          onClick={() => onDelete(transaction.id)}
+          aria-label={`Deletar transação: ${transaction.description}`}>
+          &times;
+        </button>
+      </div>
     </div>
   );
 };

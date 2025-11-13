@@ -2,7 +2,7 @@
   background: var(--card-bg);
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px var(--shadow-color);
   text-align: center;
   transition: transform 0.2s;
 }
@@ -10,7 +10,7 @@
 .card h3 {
   margin-top: 0;
   font-size: 1em;
-  color: #666;
+  color: var(--text-color);
 }
 
 .card p {
@@ -18,12 +18,16 @@
   font-weight: bold;
 }
 
-.card-income p {
-  color: var(--income-color);
+.card-income p,
+.card-success p {
+  color: var(--success-color);
 }
-.card-expense p {
-  color: var(--expense-color);
+
+.card-expense p,
+.card-error p {
+  color: var(--error-color);
 }
-.card-balance p {
-  color: var(--balance-color);
+
+.card-zero p {
+  color: var(--text-primary);
 }

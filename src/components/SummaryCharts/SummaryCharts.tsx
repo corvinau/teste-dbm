@@ -5,6 +5,7 @@ import {
   ResponsiveContainer,
   Legend,
   Tooltip,
+  type PieLabelRenderProps,
 } from 'recharts';
 import type { SummaryData } from '../../types';
 import { formatCurrency } from '../../utils/formatUtils';
@@ -13,13 +14,47 @@ interface SummaryChartsProps {
   summary: SummaryData;
 }
 
-const COLORS = ['#4CAF50', '#F44336']; // Verde para Receita, Vermelho para Despesa
+const RADIAN = Math.PI / 180;
+const COLORS = ['#69f0ae', '#ff5252'];
 
 const SummaryCharts = ({ summary }: SummaryChartsProps) => {
   const data = [
     { name: 'Receitas', value: summary.income },
     { name: 'Despesas', value: summary.expense },
   ];
+
+  const renderCustomizedLabel = ({
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    value,
+    index,
+  }: PieLabelRenderProps) => {
+    if (
+      cx == null ||
+      cy == null ||
+      innerRadius == null ||
+      outerRadius == null
+    ) {
+      return null;
+    }
+    const radius = 25 + innerRadius + (outerRadius - innerRadius);
+    const x = cx + radius * Math.cos(-(midAngle ?? 0) * RADIAN);
+    const y = cy + radius * Math.sin(-(midAngle ?? 0) * RADIAN);
+
+    return (
+      <text
+        x={x}
+        y={y}
+        textAnchor={x > cx ? 'start' : 'end'}
+        dominantBaseline='central'
+        fill={COLORS[index % COLORS.length]}>
+        {formatCurrency(value)}
+      </text>
+    );
+  };
 
   return (
     <div className='charts-container'>
@@ -33,8 +68,8 @@ const SummaryCharts = ({ summary }: SummaryChartsProps) => {
             cx='50%'
             cy='50%'
             outerRadius={80}
-            fill='#8884d8'
-            label>
+            fill='#e0e0e0'
+            label={renderCustomizedLabel}>
             {data.map((_entry, index) => (
               <Cell
                 key={`cell-${index}`}
