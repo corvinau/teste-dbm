@@ -32,12 +32,12 @@ export const formatMonth = (monthStr: string): string => {
 // Função Helper para obter o Mês Inicial (usada no filtro)
 export const getInitialMonth = (transactions: Transaction[]): string => {
   if (transactions.length === 0) {
-    return '';
+    return new Date().toISOString().substring(0, 7); 
   }
   
   const latestTransaction = transactions.reduce((latest, current) => {
     return new Date(current.date) > new Date(latest.date) ? current : latest;
-  }, transactions[0]); 
+  });
   
   return latestTransaction.date.substring(0, 7);
 };

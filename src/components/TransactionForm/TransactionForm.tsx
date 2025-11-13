@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import type { Transaction, TransactionType } from '../../types';
 
 import './TransactionForm.css';
@@ -12,25 +12,42 @@ const getTodayDate = () => new Date().toISOString().split('T')[0];
 
 const TransactionForm = ({ onAddTransaction }: TransactionFormProps) => {
   const [description, setDescription] = useState('');
-  const [amount, setAmount] = useState<number>(0);
+  const [amountStr, setAmountStr] = useState<string>('');
   const [type, setType] = useState<TransactionType>('income');
   const [date, setDate] = useState<string>(getTodayDate());
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!description || amount <= 0) return;
-
-    onAddTransaction({
-      description,
-      amount,
-      type,
-      date,
-    });
-
+  const resetForm = useCallback(() => {
     setDescription('');
-    setAmount(0);
+    setAmountStr('');
     setType('income');
     setDate(getTodayDate());
+  }, []);
+
+  const handleSubmit = useCallback(
+    (e: React.FormEvent) => {
+      e.preventDefault();
+
+      const amount = parseFloat(amountStr);
+
+      if (!description.trim() || isNaN(amount) || amount <= 0) {
+        console.error('Dados inválidos no formulário.');
+        return;
+      }
+
+      onAddTransaction({
+        description: description.trim(),
+        amount,
+        type,
+        date,
+      });
+
+      resetForm();
+    },
+    [description, amountStr, type, date, onAddTransaction, resetForm]
+  );
+
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAmountStr(e.target.value);
   };
 
   return (
@@ -45,8 +62,8 @@ const TransactionForm = ({ onAddTransaction }: TransactionFormProps) => {
       <input
         type='number'
         placeholder='Valor'
-        value={amount > 0 ? amount : ''}
-        onChange={(e) => setAmount(parseFloat(e.target.value) || 0)}
+        value={amountStr}
+        onChange={handleAmountChange}
         step='0.01'
         min='0.01'
         required

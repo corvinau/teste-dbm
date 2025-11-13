@@ -1,27 +1,31 @@
 import { useState, useMemo, useCallback } from 'react';
+
 import type { Transaction, SummaryData } from './types';
-import { initialTransactions } from './mockData';
+
+import useNotification from './hooks/useNotification';
+
 import Filter from './components/Filter/Filter';
 import Card from './components/Card/Card';
 import TransactionForm from './components/TransactionForm/TransactionForm';
 import TransactionItem from './components/TransactionItem/TransactionItem';
 import SummaryCharts from './components/SummaryCharts/SummaryCharts';
+import Notification from './components/Notification/Notification';
+
 import { formatMonth, getInitialMonth } from './utils/formatUtils';
+
+import { initialTransactions } from './mockData';
 
 import './App.css';
 
 const App = () => {
+  const { notification, showNotification } = useNotification();
+
   const [transactions, setTransactions] =
     useState<Transaction[]>(initialTransactions);
 
   const [selectedMonth, setSelectedMonth] = useState<string>(() =>
     getInitialMonth(initialTransactions)
   );
-
-  const [notification, setNotification] = useState<{
-    message: string;
-    type: 'success' | 'error';
-  } | null>(null);
 
   const availableMonths = useMemo(() => {
     const months = transactions.map((t) => t.date.substring(0, 7));
@@ -38,14 +42,6 @@ const App = () => {
       (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
     );
   }, [transactions, selectedMonth]);
-
-  const showNotification = (
-    message: string,
-    type: 'success' | 'error' = 'success'
-  ) => {
-    setNotification({ message, type });
-    setTimeout(() => setNotification(null), 3000);
-  };
 
   const summary: SummaryData = useMemo(() => {
     const income = filteredTransactions
@@ -75,20 +71,21 @@ const App = () => {
         setSelectedMonth(newMonth);
       }
     },
-    [selectedMonth]
+    [selectedMonth, showNotification]
   );
 
-  const deleteTransaction = useCallback((id: string) => {
-    setTransactions((prev) => prev.filter((t) => t.id !== id));
-    showNotification('Transação removida.', 'error');
-  }, []);
+  const deleteTransaction = useCallback(
+    (id: string) => {
+      setTransactions((prev) => prev.filter((t) => t.id !== id));
+      showNotification('Transação removida.', 'error');
+    },
+    [showNotification]
+  );
 
   return (
     <div className='app-container'>
       {notification && (
-        <div className={`notification notification-${notification.type}`}>
-          {notification.message}
-        </div>
+        <Notification message={notification.message} type={notification.type} />
       )}
 
       <header className='app-header'>

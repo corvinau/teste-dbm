@@ -9,24 +9,21 @@ interface CardProps {
 }
 
 const Card = ({ title, value, type }: CardProps) => {
-  let cardName = '';
-
   const formattedValue = formatCurrency(value);
 
-  if (value === 0) {
-    cardName = 'zero';
-  }
+  const getStatusClass = () => {
+    if (type === 'income' || type === 'expense') {
+      return type;
+    }
+    if (value > 0) return 'success';
+    if (value < 0) return 'error';
+    return 'zero';
+  };
 
-  if (value > 0 && type === 'balance') {
-    cardName = 'success';
-  }
-
-  if (value < 0 && type === 'balance') {
-    cardName = 'error';
-  }
+  const statusClass = getStatusClass();
 
   return (
-    <div className={`card card-${cardName} card-${type}`}>
+    <div className={`card card-${type} card-${statusClass}`}>
       <h3>{title}</h3>
       <p>{formattedValue}</p>
     </div>
