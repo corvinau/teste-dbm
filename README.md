@@ -1,6 +1,7 @@
 # Sobre o projeto
 
 Este projeto é uma aplicação de gerenciamento financeiro simples, desenvolvida para cumprir os requisitos do teste técnico do processo seletivo da empresa dbm Contact Center. O objetivo principal é demonstrar o domínio sobre componentização, gerenciamento de estado e fluxo de dados em uma interface simples, mas funcional.
+As transações iniciais são fornecidas através de mockData.ts. Essa abordagem simula uma API ou banco de dados, permitindo que a aplicação demonstre o gerenciamento de estado e a renderização de dados dinâmicos desde o início.
 
 ## ✨ Ideia do Projeto
 
