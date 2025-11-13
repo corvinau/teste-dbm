@@ -55,6 +55,7 @@ const TransactionForm = ({ onAddTransaction }: TransactionFormProps) => {
       <div>
         <input
           type='text'
+          name='description'
           placeholder='Descrição (ex: Aluguel, Salário)'
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -62,6 +63,7 @@ const TransactionForm = ({ onAddTransaction }: TransactionFormProps) => {
         />
         <input
           type='number'
+          name='value'
           placeholder='Valor'
           value={amountStr}
           onChange={handleAmountChange}
@@ -73,6 +75,7 @@ const TransactionForm = ({ onAddTransaction }: TransactionFormProps) => {
       <div>
         <input
           type='date'
+          name='date'
           placeholder='Data'
           value={date}
           onChange={(e) => setDate(e.target.value)}
@@ -80,6 +83,7 @@ const TransactionForm = ({ onAddTransaction }: TransactionFormProps) => {
         />
         <select
           value={type}
+          name='trasaction-type'
           onChange={(e) => setType(e.target.value as TransactionType)}
           required>
           <option value='income'>Receita</option>
