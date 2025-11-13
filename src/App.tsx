@@ -1,17 +1,16 @@
 import { useState, useMemo, useCallback } from 'react';
 import type { Transaction, SummaryData } from './types';
 import { initialTransactions } from './mockData';
-import Filter from './components/Filter';
-import Card from './components/Card';
-import TransactionForm from './components/TransactionForm';
-import TransactionItem from './components/TransactionItem';
-import SummaryCharts from './components/SummaryCharts';
+import Filter from './components/Filter/Filter';
+import Card from './components/Card/Card';
+import TransactionForm from './components/TransactionForm/TransactionForm';
+import TransactionItem from './components/TransactionItem/TransactionItem';
+import SummaryCharts from './components/SummaryCharts/SummaryCharts';
 import { formatMonth, getInitialMonth } from './utils/formatUtils';
 
 import './App.css';
 
 const App = () => {
-  // Controle de estados
   const [transactions, setTransactions] =
     useState<Transaction[]>(initialTransactions);
 
@@ -24,14 +23,12 @@ const App = () => {
     type: 'success' | 'error';
   } | null>(null);
 
-  // Lógica para extrair meses únicos para o filtro
   const availableMonths = useMemo(() => {
     const months = transactions.map((t) => t.date.substring(0, 7));
 
     return Array.from(new Set(months)).sort().reverse();
   }, [transactions]);
 
-  // Transações filtradas
   const filteredTransactions = useMemo(() => {
     const filtered = transactions.filter((t) =>
       t.date.startsWith(selectedMonth)
@@ -50,7 +47,6 @@ const App = () => {
     setTimeout(() => setNotification(null), 3000);
   };
 
-  // Lógica de cálculo
   const summary: SummaryData = useMemo(() => {
     const income = filteredTransactions
       .filter((t) => t.type === 'income')
@@ -96,7 +92,7 @@ const App = () => {
       )}
 
       <header className='app-header'>
-        <h1>Minhas Finanças 💰</h1>
+        <h1>Minhas Finanças</h1>
       </header>
 
       <section className='filter-section'>
@@ -108,26 +104,18 @@ const App = () => {
       </section>
 
       <div className='dashboard-content'>
-        {/* Cards */}
         <section className='summary-cards'>
           <Card title='Saldo Total' value={summary.balance} type='balance' />
           <Card title='Receitas' value={summary.income} type='income' />
           <Card title='Despesas' value={summary.expense} type='expense' />
         </section>
 
-        {/* Gráficos */}
-        <section className='charts-section'>
-          <SummaryCharts summary={summary} />
+        <section className='transaction-form-area'>
+          <h2>Nova Transação</h2>
+          <TransactionForm onAddTransaction={addTransaction} />
         </section>
 
         <section className='main-area'>
-          {/* Formulário de Adição */}
-          <div className='transaction-form-area'>
-            <h2>Nova Transação</h2>
-            <TransactionForm onAddTransaction={addTransaction} />
-          </div>
-
-          {/* Lista de Transações */}
           <div className='transaction-list-area'>
             <h2>
               Extrato -{' '}
@@ -148,6 +136,10 @@ const App = () => {
                 ))}
               </div>
             )}
+          </div>
+
+          <div className='charts-section'>
+            <SummaryCharts summary={summary} />
           </div>
         </section>
       </div>

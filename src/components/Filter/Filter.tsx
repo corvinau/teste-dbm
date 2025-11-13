@@ -1,4 +1,6 @@
-import { formatMonth } from '../utils/formatUtils';
+import { formatMonth } from '../../utils/formatUtils';
+
+import './Filter.css';
 
 interface FilterProps {
   availableMonths: string[];

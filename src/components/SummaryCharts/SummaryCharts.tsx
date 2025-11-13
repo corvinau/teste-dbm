@@ -6,8 +6,8 @@ import {
   Legend,
   Tooltip,
 } from 'recharts';
-import type { SummaryData } from '../types';
-import { formatCurrency } from '../utils/formatUtils';
+import type { SummaryData } from '../../types';
+import { formatCurrency } from '../../utils/formatUtils';
 
 interface SummaryChartsProps {
   summary: SummaryData;

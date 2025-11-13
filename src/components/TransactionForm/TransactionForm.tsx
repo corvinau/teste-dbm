@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import type { Transaction, TransactionType } from '../types';
+import type { Transaction, TransactionType } from '../../types';
+
+import './TransactionForm.css';
 
 interface TransactionFormProps {
   onAddTransaction: (transaction: Omit<Transaction, 'id'>) => void;

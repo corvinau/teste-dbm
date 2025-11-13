@@ -1,4 +1,6 @@
-import { formatCurrency } from '../utils/formatUtils';
+import { formatCurrency } from '../../utils/formatUtils';
+
+import './Card.css';
 
 interface CardProps {
   title: string;

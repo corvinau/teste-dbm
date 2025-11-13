@@ -1,5 +1,7 @@
-import type { Transaction } from '../types';
-import { formatCurrency, formatDateToBR } from '../utils/formatUtils';
+import type { Transaction } from '../../types';
+import { formatCurrency, formatDateToBR } from '../../utils/formatUtils';
+
+import './TransactionItem.css';
 
 interface TransactionItemProps {
   transaction: Transaction;

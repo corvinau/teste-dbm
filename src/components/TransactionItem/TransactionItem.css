@@ -1,0 +1,42 @@
+.transaction-item {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 50px;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.transaction-description {
+  font-weight: 500;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.transaction-amount {
+  font-weight: bold;
+  text-align: right;
+}
+
+.income .transaction-amount {
+  color: var(--income-color);
+}
+
+.expense .transaction-amount {
+  color: var(--expense-color);
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 1.2em;
+  cursor: pointer;
+  text-align: right;
+}
+
+.delete-btn:hover {
+  color: var(--expense-color);
+}
