@@ -1,73 +1,49 @@
-# React + TypeScript + Vite
+# Sobre o projeto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto é uma aplicação de gerenciamento financeiro simples, desenvolvida para cumprir os requisitos do teste técnico do processo seletivo da empresa dbm Contact Center. O objetivo principal é demonstrar o domínio sobre componentização, gerenciamento de estado e fluxo de dados em uma interface simples, mas funcional.
 
-Currently, two official plugins are available:
+## ✨ Ideia do Projeto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A ideia central é simular um dashboard simples de controle financeiro. A aplicação permite que o usuário adicione novas transações (receitas ou despesas), visualize o extrato, filtre as transações por mês e acompanhe o resumo financeiro (saldo, receitas e despesas).
 
-## React Compiler
+## Iniciando a aplicação
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+As instruções abaixo vão lhe permitir obter uma cópia do projeto e rodar a aplicação localmente.
 
-## Expanding the ESLint configuration
+### Pré-requisitos
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Para rodar a aplicação, você precisa ter o Node.js instalado na sua máquina.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Instalação
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Para acessar o projeto, basta clonar o repositório ou realizar o download dos arquivos do projeto.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Após clonar o repositório, acesse a pasta do projeto e instale as dependências utilizando o seguinte comando no seu terminal:
+
+```sh
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Após instalar as dependências utilize o seguinte comando no seu terminal para iniciar a aplicação:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm run dev
 ```
+
+Com isso, a aplicação estará rodando na sua máquina. Para acessar a aplicação, basta acessar o <code>localhost</code> no seu navegador.
+
+## Acessando o projeto em um servidor
+
+Para visualizar o projeto rodando em um servidor da [`Vercel`](https://vercel.com/), acesse: [teste-dbm.vercel.app/](https://teste-dbm.vercel.app/)
+
+## 🚀 Tecnologias Utilizadas
+
+- <b>ReactJS:</b> Biblioteca JavaScript para construir interfaces com base em componentes.
+- <b>TypeScript:</b> Superset de JavaScript que adiciona tipagem estática ao código.
+- <b>Vite: </b> Bundler e servidor de desenvolvimento. Compila o código durante o desenvolvimento e otimiza para o ambiente de produção.
+- <b>ESLint:</b> Ferramenta para identificar e corrigir padrões problemáticos no código JavaScript/TypeScript, garantindo consistência.
+- <b>Recharts:</b> Biblioteca leve para renderizar gráficos em React.
+
+## Observações
+
+Foram disponibilizadas todas as informações necessárias para o desenvolvimento do projeto nesse [arquivo](./teste-front-end.pdf).
