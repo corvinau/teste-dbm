@@ -4,3 +4,14 @@
   gap: 10px;
   width: 100%;
 }
+
+.transaction-form div {
+  display: flex;
+  gap: 10px;
+}
+
+.transaction-form div input,
+.transaction-form div select,
+.transaction-form div button {
+  width: 100%;
+}

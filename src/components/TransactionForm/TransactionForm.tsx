@@ -52,36 +52,40 @@ const TransactionForm = ({ onAddTransaction }: TransactionFormProps) => {
 
   return (
     <form className='transaction-form' onSubmit={handleSubmit}>
-      <input
-        type='text'
-        placeholder='Descrição (ex: Aluguel, Salário)'
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        required
-      />
-      <input
-        type='number'
-        placeholder='Valor'
-        value={amountStr}
-        onChange={handleAmountChange}
-        step='0.01'
-        min='0.01'
-        required
-      />
-      <input
-        type='date'
-        placeholder='Data'
-        value={date}
-        onChange={(e) => setDate(e.target.value)}
-        required
-      />
-      <select
-        value={type}
-        onChange={(e) => setType(e.target.value as TransactionType)}
-        required>
-        <option value='income'>Receita</option>
-        <option value='expense'>Despesa</option>
-      </select>
+      <div>
+        <input
+          type='text'
+          placeholder='Descrição (ex: Aluguel, Salário)'
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        />
+        <input
+          type='number'
+          placeholder='Valor'
+          value={amountStr}
+          onChange={handleAmountChange}
+          step='0.01'
+          min='0.01'
+          required
+        />
+      </div>
+      <div>
+        <input
+          type='date'
+          placeholder='Data'
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          required
+        />
+        <select
+          value={type}
+          onChange={(e) => setType(e.target.value as TransactionType)}
+          required>
+          <option value='income'>Receita</option>
+          <option value='expense'>Despesa</option>
+        </select>
+      </div>
       <button type='submit'>Adicionar Transação</button>
     </form>
   );

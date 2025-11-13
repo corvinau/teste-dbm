@@ -15,7 +15,7 @@ const Filter = ({
 }: FilterProps) => {
   return (
     <div className='filter-container'>
-      <label htmlFor='month-select'>Visualizar mês:</label>
+      <label htmlFor='month-select'>Mês:</label>
       <select
         id='month-select'
         value={selectedMonth}

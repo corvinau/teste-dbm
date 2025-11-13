@@ -13,10 +13,12 @@
 
 .notification-success {
   background-color: var(--success-color);
+  color: var(--text-black);
 }
 
 .notification-error {
   background-color: var(--error-color);
+  color: var(--text-black);
 }
 
 @keyframes fadeInOut {

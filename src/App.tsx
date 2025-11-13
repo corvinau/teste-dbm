@@ -64,9 +64,7 @@ const App = () => {
         id: Date.now().toString(),
       };
       setTransactions((prev) => [newTransaction, ...prev]);
-      showNotification(
-        `"${newTransaction.description}" adicionado com sucesso!`
-      );
+      showNotification('Transação adicionada com sucesso!');
 
       const newMonth = newTransaction.date.substring(0, 7);
       if (newMonth !== selectedMonth) {

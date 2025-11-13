@@ -6,6 +6,7 @@
 
   --text-primary: #e0e0e0;
   --text-secondary: #a9a9a9;
+  --text-black: #000000;
 
   --shadow-color: rgba(0, 0, 0, 0.3);
 
@@ -44,7 +45,7 @@ select {
 }
 
 select {
-  padding: 10px 36px 10px 12px;
+  padding: 10px 30px 10px 12px;
   background-image: url('./assets/arrowDown.svg');
   background-repeat: no-repeat;
   background-position: right 10px center;
