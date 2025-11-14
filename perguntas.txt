@@ -1,11 +1,11 @@
-Junto à entrega, responda brevemente:
+Perguntas:
 
 1. Como você entende o papel dos componentes no React e de que forma o estado influencia a comunicação entre eles? 
-Os papel principal dos componentes no React é separar partes da interface em partes independentes e com foco em uma responsabilidade facilitando a reutilização do componente em outros lugares da aplicação. Os estados dentro da aplicação são responsáveis por atualizar os dados que os componentes acessam, a mudança de estados faz a comunicação entre os componentes, que pode ser de pai pra filho (top-down) ou de filho pra pai (bottom-up). Quando é de pai pra filho props são enviadas para fazer a comunicação de um estado para outro e quando é de filho pra pai uma função callback é chamada para atualizar as props e retornar a mudança para o componente pai.
-  
+O papel principal dos componentes no React é separar partes da interface em partes independentes e com foco em uma responsabilidade, facilitando a reutilização do componente em outros lugares da aplicação. Os estados dentro da aplicação são responsáveis por atualizar os dados que os componentes acessam, a mudança de estados faz a comunicação entre os componentes, que pode ser de pai pra filho (top-down) ou de filho pra pai (bottom-up). Quando é de pai pra filho props são enviadas para fazer a comunicação de um estado para outro e quando é de filho pra pai uma função callback é chamada para atualizar as props e retornar a mudança para o componente pai.
+  
 2. O que são componentes no React e por que é importante quebrar a interface em partes menores?
 Componentes são funções que podem ou não receber entradas (props) e retornam elementos que montam a interface de uma aplicação. A importância em quebrar as a interface em partes menores é facilitar a utilização desses componentes em várias partes da aplicação sem precisar escrever a mesma coisa várias vezes, e também para manter a lógica desse componente em um lugar só, facilitando a manutenção.
-  
+  
 3. O que são Hooks e qual a diferença entre useState e useEffect? 
 Hooks são funções no React que permitem usar recursos do React em componentes funcionais sem a necessidade de escrever componentes de classe. Eles facilitam a organização da lógica de componentes e a reutilização de comportamentos com estado entre diferentes componentes.
 useState: gerencia o estado local de um componente, é utilizado para armazenar dados que quando alterados mandam uma nova renderização do componente.
