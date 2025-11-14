@@ -47,4 +47,6 @@ Para visualizar o projeto rodando em um servidor da [`Vercel`](https://vercel.co
 
 ## Observações
 
-Foram disponibilizadas todas as informações necessárias para o desenvolvimento do projeto nesse [arquivo](./teste-front-end.pdf).
+Foram disponibilizadas todas as informações necessárias para o desenvolvimento do projeto no arquivo [teste-front-end.pdf](./teste-front-end.pdf).
+
+As perguntas finais feitas no documento de explicação do teste estão respondidas no arquivo [perguntas.txt](./perguntas.txt)
